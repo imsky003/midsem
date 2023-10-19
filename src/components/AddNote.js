@@ -20,7 +20,7 @@ function AddNote() {
   return (
     <>
       <div className="container my-3">
-        <h2 className="text-center">Add a Note</h2>
+        <h2 className="text-center">Add a Note for {localStorage.getItem('email')}</h2>
         <form>
           <div className="mb-3">
             <label htmlFor="title" className="form-label">

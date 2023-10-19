@@ -21,6 +21,7 @@ function Login(props) {
     if (json.success) {
 
       localStorage.setItem("token", json.authtoken);
+      localStorage.setItem("email", json.email);
       props.showAlert("Successfully Login", "success");
       history("/");
     } else {

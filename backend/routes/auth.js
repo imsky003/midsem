@@ -9,8 +9,7 @@ const JWT_SECRET = "not worthy";
 
 // Route:1 for createlogin
 
-router.post(
-  "/createuser",
+router.post("/createuser",
   [
     body("email", "enter a valid email").isEmail(),
     body("name", "enter a valid name").isLength({ min: 3 }),
@@ -40,11 +39,7 @@ router.post(
         password: secPass,
         email: req.body.email,
       });
-      //   .then((user) => res.json(user))
-      //   .catch((err) => {
-      //     console.log(err);
-      //     res.json({ err: "please enter unique email" });
-      //   });
+
       const data = {
         user: {
           id: user.id,
@@ -96,12 +91,13 @@ router.post(
       const data = {
         user: {
           id: user.id,
+          email: user.email
         },
       };
 
       var authtoken = jwt.sign(data, JWT_SECRET);
       success = true;
-      res.json({ success, authtoken });
+      res.json({ success, authtoken, email });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("internal server error occurred");
